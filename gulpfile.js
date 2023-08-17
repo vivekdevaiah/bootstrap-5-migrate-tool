@@ -164,6 +164,8 @@ function migrate() {
     .pipe(replace(/(<[^>]*class\s*=\s*['"][^'"]*)\btext-monospace\b([^'"]*['"])/g, '$1font-monospace$2'))
     .pipe(replace(/<select([^>]*)\bclass=['"]([^'"]*)form-control(-lg|-sm)?([^'"]*)['"]([^>]*)>/g, '<select$1class="$2form-select$3$4"$5>'))
     .pipe(replace(/<select([^>]*)\bclass=['"]([^'"]*)form-control\b([^'"]*['"])/g, '<select$1class="$2form-select$3'))
+    .pipe(replace('<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
+                  '<button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>'))
     .pipe(dest('dest/'));
 }
 
